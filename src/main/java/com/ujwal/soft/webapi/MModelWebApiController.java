@@ -15,8 +15,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ujwal.soft.models.GetModelsForBill;
 import com.ujwal.soft.models.Info;
 import com.ujwal.soft.models.MModelBean;
+import com.ujwal.soft.repositories.GetModelsForBillRepo;
 import com.ujwal.soft.repositories.MModelRepo;
 
 @RestController
@@ -105,7 +107,15 @@ public class MModelWebApiController {
 	@RequestMapping(value="/getModelByCompanyId", method=RequestMethod.POST)
 	public @ResponseBody List<MModelBean> getModelByCompanyId(@RequestParam ("companyId") int companyId){
 	
-		return modRepo.findAllByCompanyIdAndDelStatus(companyId, 0);
+		return modRepo.findAllByCompanyIdAndDelStatus(companyId, 0);		
+	}
+	
+	@Autowired GetModelsForBillRepo modelListRepo;
+	@RequestMapping(value="/getModelListForBill", method=RequestMethod.POST)
+	public @ResponseBody List<GetModelsForBill> getModelListForBill(@RequestParam ("companyId") int companyId){
+	
+		return modelListRepo.getModelListForBill(companyId);
 		
 	}
+	
 }

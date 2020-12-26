@@ -10,10 +10,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ujwal.soft.models.GetPartsForBill;
 import com.ujwal.soft.models.Info;
 import com.ujwal.soft.models.MCompany;
 import com.ujwal.soft.models.MPart;
 import com.ujwal.soft.models.MPartList;
+import com.ujwal.soft.repositories.GetPartsForBillRepo;
 import com.ujwal.soft.repositories.MCompanyRepo;
 import com.ujwal.soft.repositories.MPartDetails;
 import com.ujwal.soft.repositories.MPartRepo;
@@ -97,5 +99,12 @@ public class MPartWebApiController {
 	@ResponseBody List<MPartList> getAllPartDetails(@RequestParam ("companyId") int companyId){
 		return partDetail.getAllPartDetail(companyId);
 		
+	}
+	
+	@Autowired GetPartsForBillRepo partBillRepo;
+	@RequestMapping(value="/getPartListForBill", method=RequestMethod.POST)
+	@ResponseBody List<GetPartsForBill> getPartListForBill(@RequestParam ("modelId") int modelId){
+		
+		return partBillRepo.getAllPartByModelId(modelId);		
 	}
 }
