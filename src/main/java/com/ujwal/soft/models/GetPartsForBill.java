@@ -8,6 +8,7 @@ public class GetPartsForBill {
 	private int partId;
 	private String partName;
 	private String partNo;
+	private String partRoNo; //model no.
 	public int getPartId() {
 		return partId;
 	}
@@ -26,10 +27,16 @@ public class GetPartsForBill {
 	public void setPartNo(String partNo) {
 		this.partNo = partNo;
 	}
+	public String getPartRoNo() {
+		return partRoNo;
+	}
+	public void setPartRoNo(String partRoNo) {
+		this.partRoNo = partRoNo;
+	}
 	@Override
 	public String toString() {
-		return "GetPartsForBill [partId=" + partId + ", partName=" + partName + ", partNo=" + partNo + "]";
+		return "GetPartsForBill [partId=" + partId + ", partName=" + partName + ", partNo=" + partNo + ", partRoNo="
+				+ partRoNo + "]";
 	}
-	
 	
 }

@@ -102,9 +102,8 @@ public class MPartWebApiController {
 	}
 	
 	@Autowired GetPartsForBillRepo partBillRepo;
-	@RequestMapping(value="/getPartListForBill", method=RequestMethod.POST)
-	@ResponseBody List<GetPartsForBill> getPartListForBill(@RequestParam ("modelId") int modelId){
-		
-		return partBillRepo.getAllPartByModelId(modelId);		
+	@RequestMapping(value="/getAllVehPart", method=RequestMethod.GET)
+	public@ResponseBody List<GetPartsForBill> getAllVehPart(){
+		return partBillRepo.getAllParts();		
 	}
 }
